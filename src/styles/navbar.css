@@ -49,6 +49,17 @@
   align-items: center;
   gap: 15px;
 }
+
+.iconos img {
+  transition: filter 0.3s ease;
+}
+
+/* Cambia el color del hover de los iconos de redes sociales aquí */
+.iconos img:hover {
+  filter: brightness(0) saturate(100%) invert(15%) sepia(99%)
+    saturate(7484%) hue-rotate(357deg) brightness(97%) contrast(119%);
+}
+
 .navbar ul li {
   position: relative;
   cursor: pointer;
