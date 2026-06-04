@@ -1,0 +1,156 @@
+
+
+.valoracion {
+  width: 90%;
+  max-width: 1150px;                                      
+  margin: auto;
+  padding: 5% 0;
+  background: aliceblue;
+}
+
+.valoracion h2 {
+  text-align: center;
+
+  color: #1f57c3;
+  font-size: 1rem;
+
+  margin-bottom: 40px;
+
+  border-top: 2px solid #1f57c3;
+  padding-top: 15px;
+}
+
+.valoracion h2 span {
+  color: #0056ff;
+}
+
+.valoracion-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  background: white;
+
+  border-radius: 15px;
+  overflow: hidden;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.valoracion-form {
+  padding: 40px;
+}
+
+.valoracion-form h3 {
+  color: #002b5c;
+  font-size: 1.5rem;
+
+  margin-bottom: 30px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 8px;
+
+}
+
+.form-grid div,
+.full-input {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.7rem;
+  margin-bottom: 1px;
+  font-weight: bold;
+
+  color: #002b5c;
+}
+
+input,
+select {
+  padding: 8px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 0.95rem;
+   background-color: white;
+  color: black;
+}
+
+.full-input {
+  margin-top: 5px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.checkbox p {
+  font-size: 0.9rem;
+}
+
+.valoracion-form button {
+  width: 100%;
+
+  margin-top: 30px;
+  padding: 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #002b5c;
+
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.valoracion-form button:hover {
+  background: #004080;
+}
+
+.valoracion-img img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.terminos {
+  text-align: center;
+
+  margin-top: 20px;
+
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .valoracion-container {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .valoracion-img {
+    height: 400px;
+  }
+}

@@ -1,0 +1,119 @@
+.why-container {
+  width: 100%;
+  min-height: 600px;
+  padding: 60px 0%;
+   display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 100%;
+  background: #ffffff;
+}
+
+.why-grid {
+  width: 100%;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Imagen */
+
+.why-image {
+  display: flex;
+  justify-content: flex-end; /* 👈 mueve la imagen a la derecha */
+  padding-right: 100px; 
+}
+
+
+.why-image img {
+  width: 100%;
+  max-width: 540px;
+
+ 
+}
+
+.why-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 👈 TODO a la izquierda */
+  text-align: left;
+}
+
+/* Texto */
+.why-content h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #010813;
+}
+
+.why-content h2 span {
+  color: #1e63c6;
+}
+
+.why-content p {
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Lista */
+.why-content ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.why-content ul li {
+  display: flex;              /* 👈 clave */
+  align-items: flex-start;        /* 👈 centra vertical */
+  gap: 12px;    
+  margin-bottom: 14px;
+  position: relative;
+  padding-left: 0px;
+  color:#444;
+  line-height: 1.4;
+}
+
+/* Iconos */
+.why-content ul li img {
+  width: 28px;                /* 👈 tamaño uniforme */
+  height: 28px;
+  object-fit: contain;
+   border-radius: 50%; /* 👈 hace el círculo */
+}
+
+
+
+/* Botón */
+.why-content button {
+  background: #1e63c6;
+  color: white;
+  border: none;
+  padding: 14px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.why-content button:hover {
+  background: #144a9e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .why-content ul li {
+    padding-left: 0;
+  }
+
+  .why-content ul li::before {
+    display: none;
+  }
+}

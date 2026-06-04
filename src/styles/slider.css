@@ -1,0 +1,140 @@
+.slider-pro {
+  position: relative;
+  width: 100%;
+  height: 87vh;
+  overflow: hidden;
+}
+
+/* Slides */
+.slide-pro {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.8s ease, transform 1.5s ease;
+}
+
+.slide-pro.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Overlay tipo degradado institucional */
+.overlay-pro {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 77, 132, 0.85) 0%,
+    rgba(0, 77, 132, 0.6) 40%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  display: flex;
+  align-items: center;
+}
+
+/* Contenido */
+.content {
+  margin-left: 80px;
+  max-width: 500px;
+  color: white;
+  animation: fadeInUp 1s ease;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  line-height: 0.8;
+  color:black;
+}
+
+.content p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.content button {
+  background: #14a4e5;
+  border: none;
+  padding: 12px 25px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.content button:hover {
+  background: #0c82b5;
+}
+
+/* Flechas */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: white;
+  font-size: 30px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow.left { left: 20px; }
+.arrow.right { right: 20px; }
+
+/* Indicadores */
+.indicators {
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  text-align: center;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 6px;
+  display: inline-block;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+}
+
+.dot.active {
+  background: white;
+}
+
+/* Animación */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slider-pro {
+    height: 400px;
+  }
+
+  .content {
+    margin-left: 20px;
+  }
+
+  .content h1 {
+    font-size: 1.5rem;
+  }
+}
