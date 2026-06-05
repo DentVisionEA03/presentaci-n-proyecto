@@ -11,7 +11,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-top">
-        <h2>DentiSalud</h2>
+        <h2>DentVision</h2>
 
         <p>
           Tratamientos dentales y odontología hecha con responsabilidad. Obtén
@@ -35,7 +35,7 @@ function Footer() {
         </div>
 
         <div className="footer-column">
-          <h3>Sobre DentiSalud</h3>
+          <h3>Sobre </h3>
 
           <a href="/">Línea ética</a>
           <a href="/">Acerca de nosotros</a>
@@ -97,14 +97,14 @@ function Footer() {
             </p>
 
             <p>
-              <strong>Correo:</strong> info@dentisalud.com.co
+              <strong>Correo:</strong> info@dentVision.com.co
             </p>
           </div>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>Dentisalud 2026 - Todos los derechos reservados</p>
+        <p>DentVision2026 - Todos los derechos reservados</p>
       </div>
     </footer>
   );

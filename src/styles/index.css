@@ -1,7 +1,14 @@
-*{
-    background: blue b  ;
+@import './variables.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-       background: #ee0404;
+body {
+  background: var(--light);
+  font-family: var(--font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

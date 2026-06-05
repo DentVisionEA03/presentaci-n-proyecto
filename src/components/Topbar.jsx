@@ -1,6 +1,6 @@
 import "../styles/topbar.css";
 
-function TopBar() {
+function TopBar({ onLoginClick }) {
   return (
     <div className="topbar">
       <div className="topbar-left">
@@ -30,7 +30,7 @@ function TopBar() {
         <span>Únete</span>
         <span>|</span>
 
-        <span>Iniciar sesión</span>
+        <span onClick={onLoginClick}>Iniciar sesión</span>
       </div>
     </div>
   );
