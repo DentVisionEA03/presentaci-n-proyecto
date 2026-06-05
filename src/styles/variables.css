@@ -1,0 +1,117 @@
+/**
+ * Variables CSS centralizadas para el sistema de diseño
+ * Incluye colores, espaciado, y breakpoints
+ */
+
+:root {
+  /* === COLORES PRIMARIOS === */
+  --primary: #00a8b5;
+  --primary-dark: #008a95;
+  --primary-light: #26c4cf;
+  
+  /* === COLORES SECUNDARIOS === */
+  --secondary: #004d84;
+  --secondary-dark: #003a5c;
+  --secondary-light: #0c63ce;
+  
+  /* === COLORES DE ACENTO === */
+  --accent: #0c63ce;
+  --accent-dark: #0a4fa5;
+  --accent-light: #3d84e8;
+  
+  /* === COLORES NEUTROS === */
+  --dark: #002b67;
+  --dark-gray: #333333;
+  --gray: #666666;
+  --light-gray: #999999;
+  --lighter-gray: #cccccc;
+  --light: #f4f7f6;
+  --white: #ffffff;
+  
+  /* === COLORES DE ESTADO === */
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --info: #17a2b8;
+  --error: #ee0404;
+  
+  /* === ESPACIADO === */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  
+  /* === TIPOGRAFÍA === */
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* === RADIOS === */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* === SOMBRAS === */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  
+  /* === BREAKPOINTS === */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+  
+  /* === TRANSICIONES === */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+}
+
+/* Media query helpers para uso rápido */
+@media (max-width: 575px) {
+  :root {
+    --current-breakpoint: xs;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  :root {
+    --current-breakpoint: sm;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  :root {
+    --current-breakpoint: md;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  :root {
+    --current-breakpoint: lg;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --current-breakpoint: xl;
+  }
+}
