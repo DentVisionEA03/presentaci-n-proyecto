@@ -1,12 +1,13 @@
 import axios from 'axios'
+import { API_URL } from '../services/apiClient'
 
 const axiosClient = axios.create({
-  baseURL: 'https://backend-dentvision-project.onrender.com',
+  baseURL: API_URL,
 })
 axiosClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token') || sessionStorage.getItem('token')
   if (token) {
-    config.headers.Authorization = `Bearer ${token}` // TODO: Implementar template literals
+    config.headers.Authorization = `Bearer ${token}`
   }
   return config
 })
