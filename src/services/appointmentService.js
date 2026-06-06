@@ -1,6 +1,6 @@
 import apiClient from './apiClient'
 
-const useMockApi = import.meta.env.VITE_USE_MOCK_API !== 'false'
+const useMockApi = import.meta.env.VITE_USE_MOCK_API === 'true'
 const appointmentsStorageKey = 'dentvision-appointments'
 
 const wait = (milliseconds) =>

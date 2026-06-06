@@ -1,6 +1,6 @@
 import apiClient from './apiClient'
 
-const useMockApi = import.meta.env.VITE_USE_MOCK_API !== 'false'
+const useMockApi = import.meta.env.VITE_USE_MOCK_API === 'true'
 
 const wait = (milliseconds) =>
   new Promise((resolve) => {
@@ -73,7 +73,11 @@ export const registerUser = async ({ name, email, password }) => {
     }
   }
 
-  return apiClient.post('/auth/register', { name, email, password })
+  return apiClient.post('/auth/register', {
+    username: name,
+    email,
+    password,
+  })
 }
 
 export const recoverPassword = async ({ email }) => {

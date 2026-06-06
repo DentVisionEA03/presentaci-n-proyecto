@@ -1,6 +1,10 @@
 import { clearSession, getSessionToken, isSessionExpired } from './sessionStorage'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
+const DEFAULT_API_URL = 'https://backend-dentvision-project.onrender.com'
+const API_URL = (import.meta.env.DEV
+  ? '/api'
+  : (import.meta.env.VITE_API_URL || DEFAULT_API_URL)
+).replace(/\/$/, '')
 
 let unauthorizedHandler = null
 
