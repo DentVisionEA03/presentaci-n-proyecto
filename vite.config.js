@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import babel from '@rolldown/plugin-babel'
 
+const backendTarget = process.env.VITE_API_URL || 'https://backend-dentvision-project.onrender.com'
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -13,12 +15,14 @@ export default defineConfig({
     port: 5174,
     proxy: {
       '/api': {
-        target: 'https://backend-dentvision-project.onrender.com',
+        target: backendTarget,
         changeOrigin: true,
-        secure: true,
+        secure: backendTarget.startsWith('https://'),
         rewrite: (path) => path.replace(/^\/api/, ''),
         onProxyReq: (proxyReq) => {
-          proxyReq.setHeader('Origin', 'https://backend-dentvision-project.onrender.com')
+          if (backendTarget.startsWith('https://')) {
+            proxyReq.setHeader('Origin', backendTarget)
+          }
         },
       },
     },
