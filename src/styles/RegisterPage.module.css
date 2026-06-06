@@ -1,0 +1,13 @@
+.cardGlass {
+  border-radius: 16px !important; /* El !important asegura que Bootstrap no lo pise */
+  background: rgba(
+    20,
+    55,
+    121,
+    0.25
+  ) !important; /* Subí un poco la opacidad a 0.25 para que contraste mejor con tu fondo blanco */
+  color: rgb(129, 190, 240) !important;
+  box-shadow: 0 24px 70px rgba(156, 171, 236, 0.32);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}

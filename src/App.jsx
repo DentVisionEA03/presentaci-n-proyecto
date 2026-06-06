@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider, useAuth } from "./components/context/AuthContext";
+import 'bootstrap/dist/css/bootstrap.min.css'
 import AdminDashboard from "./components/AdminDashboard";
 import DentistDashboard from "./components/DentistDashboard";
 import SecretaryDashboard from "./components/SecretaryDashboard";
@@ -22,6 +23,7 @@ import Footer from "./components/Footer";
 import FranjaBlanca from "./components/FranjaBlanca";
 import Login from "./components/Login_inicio_sesion";
 import ServicesPage from "./components/ServicesPage";
+import RegisterPage from "./components/RegisterPage";
 import SpecialistsPage from "./components/SpecialistsPage";
 import ChatBot from "./components/ChatBot";
 //css
@@ -153,7 +155,12 @@ function AppContent() {
 
   return (
     <>
-      <LandingPage onLoginClick={() => setShowLogin(true)} />
+      <Routes>
+        <Route path="/" element={<LandingPage onLoginClick={() => setShowLogin(true)} />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<Login onLogin={login} onBack={() => window.history.back()} />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
       <ChatBot />
     </>
   );
