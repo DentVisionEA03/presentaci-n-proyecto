@@ -1,3 +1,10 @@
 node_modules/
 dist/
+
+# Variables de entorno con credenciales — NUNCA subir al repo
 .env
+.env.local
+.env.*.local
+
+# La plantilla sí se sube a Git
+# .env.example  ← este archivo SE SUBE

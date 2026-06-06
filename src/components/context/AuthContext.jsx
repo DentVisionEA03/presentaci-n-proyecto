@@ -1,3 +1,13 @@
+/**
+ * AuthContext.jsx
+ *
+ * Cambios respecto al original:
+ * - login() recibe la respuesta ya normalizada de authService.loginUser()
+ *   que adapta { token, user: { username } } del backend al shape del frontend
+ * - saveSession() ya no recibe expiresIn en segundos sino que authService
+ *   fija 86400 (24h) igual que la configuración del backend
+ * - El handler de sesión expirada sigue funcionando igual
+ */
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { loginUser } from '../../services/authService'
 import apiClient from '../../services/apiClient'
@@ -11,36 +21,17 @@ import {
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(() =>
-    Boolean(readSessionValue('token')) && !isSessionExpired(),
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    () => Boolean(readSessionValue('token')) && !isSessionExpired(),
   )
+
   const [user, setUser] = useState(() => {
-    if (isSessionExpired()) {
-      clearSession()
-      return null
-    }
-
-    const savedUser = readSessionValue('user')
-
-    if (!savedUser) return null
-
-    try {
-      return JSON.parse(savedUser)
-    } catch {
-      clearSession()
-      return null
-    }
+    if (isSessionExpired()) { clearSession(); return null }
+    const saved = readSessionValue('user')
+    if (!saved) return null
+    try { return JSON.parse(saved) }
+    catch { clearSession(); return null }
   })
-
-  const login = async ({ email, password, remember = false } = {}) => {
-    const session = await loginUser({ email, password })
-
-    saveSession(session, remember)
-    setUser(session.user)
-    setIsAuthenticated(true)
-
-    return session
-  }
 
   const logout = () => {
     clearSession()
@@ -48,22 +39,24 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false)
   }
 
+  const login = async ({ email, password, remember = false } = {}) => {
+    // authService.loginUser devuelve { token, expiresIn, user: { id, name, email, role, ... } }
+    const session = await loginUser({ email, password })
+    saveSession(session, remember)
+    setUser(session.user)
+    setIsAuthenticated(true)
+    return session
+  }
+
   useEffect(() => {
     apiClient.setUnauthorizedHandler(logout)
-
     return () => apiClient.setUnauthorizedHandler(null)
   }, [])
 
   useEffect(() => {
     if (!isAuthenticated) return undefined
-
-    const sessionGuard = window.setInterval(() => {
-      if (isSessionExpired()) {
-        logout()
-      }
-    }, 60_000)
-
-    return () => window.clearInterval(sessionGuard)
+    const guard = window.setInterval(() => { if (isSessionExpired()) logout() }, 60_000)
+    return () => window.clearInterval(guard)
   }, [isAuthenticated])
 
   const value = useMemo(
@@ -71,9 +64,7 @@ export const AuthProvider = ({ children }) => {
     [isAuthenticated, user],
   )
 
-  return (
-    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
