@@ -16,6 +16,7 @@ const RegisterPage = () => {
   })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -134,7 +135,7 @@ const RegisterPage = () => {
                   <div className="mb-3">
                     <label className="form-label">Contraseña</label>
                     <input
-                      type="password"
+                      type={showPassword ? 'text' : 'password'}
                       name="password"
                       className="form-control"
                       value={formData.password}
@@ -146,13 +147,23 @@ const RegisterPage = () => {
                   <div className="mb-3">
                     <label className="form-label">Confirmar Contraseña</label>
                     <input
-                      type="password"
+                      type={showPassword ? 'text' : 'password'}
                       name="confirmPassword"
                       className="form-control"
                       value={formData.confirmPassword}
                       onChange={handleChange}
                       required
                     />
+                  </div>
+
+                  <div className="mb-3 d-flex justify-content-end">
+                    <button
+                      type="button"
+                      className="btn btn-link btn-sm text-primary text-decoration-none p-0 fw-bold"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? 'Ocultar contraseñas' : 'Mostrar contraseñas'}
+                    </button>
                   </div>
 
                   {error && <p className="text-danger small">{error}</p>}
