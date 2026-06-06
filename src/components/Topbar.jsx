@@ -1,4 +1,5 @@
 import "../styles/topbar.css";
+import { Link, } from 'react-router-dom'
 
 function TopBar({ onLoginClick }) {
   return (
@@ -27,7 +28,9 @@ function TopBar({ onLoginClick }) {
         <span>Ayuda</span>
         <span>|</span>
 
-        <span>Únete</span>
+        <Link to="/register" style={{ color: 'inherit', textDecoration: 'none' }}>
+          <span>Únete</span>
+        </Link>
         <span>|</span>
 
         <span onClick={onLoginClick}>Iniciar sesión</span>
