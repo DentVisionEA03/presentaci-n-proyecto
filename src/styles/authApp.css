@@ -373,7 +373,7 @@ p {
   pointer-events: none;
 }
 
-.page-background > * {
+.page-background>* {
   position: relative;
   z-index: 1;
 }
@@ -1471,6 +1471,39 @@ input:focus-visible {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Admin Tabs Styling */
+.admin-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid #d9ecef;
+  padding-bottom: 0;
+}
+
+.admin-tab {
+  padding: 12px 24px;
+  border: none;
+  background: transparent;
+  color: #526579;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.admin-tab:hover {
+  color: var(--secondary);
+  background: rgba(0, 168, 181, 0.05);
+}
+
+.admin-tab.active {
+  color: var(--secondary);
+  border-bottom-color: var(--secondary);
+  background: rgba(0, 168, 181, 0.08);
 }
 
 @media (max-width: 768px) {

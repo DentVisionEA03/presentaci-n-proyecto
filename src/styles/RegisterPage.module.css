@@ -1,13 +1,135 @@
 .cardGlass {
-  border-radius: 16px !important; /* El !important asegura que Bootstrap no lo pise */
-  background: rgba(
-    20,
-    55,
-    121,
-    0.25
-  ) !important; /* Subí un poco la opacidad a 0.25 para que contraste mejor con tu fondo blanco */
+  border-radius: 16px !important;
+  background: rgba(20, 55, 121, 0.25) !important;
   color: rgb(129, 190, 240) !important;
   box-shadow: 0 24px 70px rgba(156, 171, 236, 0.32);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+}
+
+/* Estilos para validación */
+.passwordValidator {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.validatorRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+}
+
+.validatorRow:last-child {
+  margin-bottom: 0;
+}
+
+.valid {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.invalid {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+/* Estilos para el botón de mostrar contraseña */
+.eyeButton {
+  border: none;
+  background: transparent !important;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.eyeButton:hover {
+  opacity: 0.7;
+}
+
+/* Estilos para enlaces */
+.link {
+  color: #64b5f6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #90caf9;
+  text-decoration: underline;
+}
+
+/* Estilos para el botón submit */
+.submitButton {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #357abd 0%, #2a5a9a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Estilos para inputs del formulario */
+.cardGlass .form-control,
+.cardGlass .form-select {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+.cardGlass .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.cardGlass .form-control:focus,
+.cardGlass .form-select:focus {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: #64b5f6 !important;
+  color: white !important;
+  box-shadow: 0 0 0 0.2rem rgba(100, 181, 246, 0.25) !important;
+}
+
+.cardGlass .form-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* Validación visual */
+.cardGlass .is-invalid {
+  border-color: #dc3545 !important;
+}
+
+.cardGlass .invalid-feedback {
+  color: #ff6b6b !important;
+  font-size: 0.85rem;
+}
+
+/* Checkbox styling */
+.cardGlass .form-check-input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cardGlass .form-check-input:checked {
+  background-color: #4a90e2;
+  border-color: #4a90e2;
+}
+
+.cardGlass .form-check-label {
+  color: rgba(255, 255, 255, 0.9);
 }

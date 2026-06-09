@@ -56,10 +56,13 @@ export const loginUser = async ({ email, password }) => {
 }
 
 // ── Registro ──────────────────────────────────────────────────────────────────
-export const registerUser = async ({ name, email, password }) => {
+export const registerUser = async ({ documentType,documento, nombres,apellidos, email, password }) => {
   // El campo del formulario se llama `name`, el backend espera `username`
   const raw = await apiClient.post('/auth/register', {
-    username: name,
+    tipoIdentificacion: documentType,
+    identificacion: documento,
+    nombres,
+    apellidos,
     email,
     password,
   })

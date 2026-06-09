@@ -54,6 +54,7 @@ const request = async (path, options = {}) => {
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
       ...options.headers,
     },
+
   })
 
   if (response.status === 204) return null

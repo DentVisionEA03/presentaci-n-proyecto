@@ -1,7 +1,7 @@
 /**
- * employeeService.js — NUEVO archivo
+ * employeeService.js — Servicio de Gestión de Empleados
  *
- * Contratos reales del backend:
+ * Contratos del backend:
  *
  * GET    /empleados           → EmployeeResponse[]
  * GET    /empleados/:id       → EmployeeResponse
@@ -10,43 +10,74 @@
  * DELETE /empleados/:id       → 204              (requiere JWT)
  *
  * EmployeeResponse:
- *   { id, nombres, apellidos, documento, telefono, estado }
+ *   { id, nombres, apellidos, documento, telefono, estado, especialidad, tipo }
  *
- * Los empleados con rol ODONTOLOGO son los odontólogos del sistema.
- * El rol se gestiona mediante /empleado-roles.
+ * Tipos de empleado: ODONTOLOGO, TECNICO_DENTAL, AUXILIAR_ADMINISTRATIVA
  */
 import apiClient from './apiClient'
-
-const useMockApi = import.meta.env.VITE_USE_MOCK_API !== 'false'
-const wait = (ms) => new Promise((r) => setTimeout(r, ms))
-
-const mockEmployees = [
-  { id: 1, nombres: 'Laura',  apellidos: 'Medina',    documento: '11122233', telefono: '3001111111', estado: 'ACTIVO', specialty: 'Odontologia general' },
-  { id: 2, nombres: 'Carlos', apellidos: 'Rojas',     documento: '44455566', telefono: '3002222222', estado: 'ACTIVO', specialty: 'Ortodoncia' },
-  { id: 3, nombres: 'Andres', apellidos: 'Quintero',  documento: '77788899', telefono: '3003333333', estado: 'ACTIVO', specialty: 'Estetica dental' },
-]
-
 export const normalizeEmployee = (raw) => ({
-  id:        raw.id        || '',
-  nombres:   raw.nombres   || '',
-  apellidos: raw.apellidos || '',
-  fullName:  `${raw.nombres || ''} ${raw.apellidos || ''}`.trim(),
-  documento: raw.documento || '',
-  telefono:  raw.telefono  || '',
-  estado:    raw.estado    || 'ACTIVO',
-  specialty: raw.specialty || '',
-  // Campo `specialist` usado por DentistDashboard para filtrar sus citas
-  specialist: raw.specialist || `${raw.nombres || ''} ${raw.apellidos || ''}`.trim(),
+  id:           raw.id          || '',
+  nombres:      raw.nombres     || '',
+  apellidos:    raw.apellidos   || '',
+  fullName:     `${raw.nombres || ''} ${raw.apellidos || ''}`.trim(),
+  documento:    raw.documento   || '',
+  telefono:     raw.telefono    || '',
+  estado:       raw.estado      || 'ACTIVO',
+  especialidad: raw.especialidad || '',
+  tipo:         raw.tipo        || 'AUXILIAR_ADMINISTRATIVA',
+  specialist:   `${raw.nombres || ''} ${raw.apellidos || ''}`.trim(),
 })
 
+// ── READ (Obtener Empleados) ─────────────────────────────────────────────────
 export const getEmployees = async () => {
-  if (useMockApi) { await wait(300); return mockEmployees.map(normalizeEmployee) }
+
   const raw = await apiClient.get('/empleados')
   return (Array.isArray(raw) ? raw : []).map(normalizeEmployee)
 }
 
 export const getEmployeeById = async (id) => {
-  if (useMockApi) { await wait(200); const e = mockEmployees.find((x) => x.id === id); return e ? normalizeEmployee(e) : null }
+
   const raw = await apiClient.get(`/empleados/${id}`)
   return normalizeEmployee(raw)
+}
+
+// ── CREATE (Crear Empleado) ──────────────────────────────────────────────────
+export const createEmployee = async (employeeData) => {
+  const payload = {
+    nombres: employeeData.nombres,
+    apellidos: employeeData.apellidos,
+    documento: employeeData.documento,
+    telefono: employeeData.telefono,
+    especialidad: employeeData.especialidad,
+    tipo: employeeData.tipo,
+    estado: 'ACTIVO',
+  }
+
+
+  const raw = await apiClient.post('/empleados', payload)
+  return normalizeEmployee(raw)
+}
+
+// ── UPDATE (Actualizar Empleado) ─────────────────────────────────────────────
+export const updateEmployee = async (id, employeeData) => {
+  const payload = {
+    nombres: employeeData.nombres,
+    apellidos: employeeData.apellidos,
+    documento: employeeData.documento,
+    telefono: employeeData.telefono,
+    especialidad: employeeData.especialidad,
+    tipo: employeeData.tipo,
+    estado: employeeData.estado || 'ACTIVO',
+  }
+
+
+  const raw = await apiClient.put(`/empleados/${id}`, payload)
+  return normalizeEmployee(raw)
+}
+
+// ── DELETE (Eliminar Empleado) ───────────────────────────────────────────────
+export const deleteEmployee = async (id) => {
+
+  await apiClient.delete(`/empleados/${id}`)
+  return { success: true }
 }
