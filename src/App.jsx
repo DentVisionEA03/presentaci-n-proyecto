@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider, useAuth } from "./components/context/AuthContext";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminDashboard from "./components/AdminDashboard";
 import DentistDashboard from "./components/DentistDashboard";
 import SecretaryDashboard from "./components/SecretaryDashboard";
@@ -58,14 +58,14 @@ function LandingPage({ onLoginClick }) {
     );
 }
 
-// Página de citas con el nuevo componente estilo Salud Total
+
 function AppointmentPage() {
-    const { user } = useAuth()
+    const { user } = useAuth();
     return (
         <AppLayout>
             <AppointmentForm userId={user?.id} />
         </AppLayout>
-    )
+    );
 }
 
 /**
@@ -74,7 +74,7 @@ function AppointmentPage() {
  * Esto garantiza que cada dashboard se renderice limpio al cambiar de rol.
  */
 function AuthenticatedRoutes({ user }) {
-    const role = user?.role
+    const role = user?.role;
 
     if (role === "admin") {
         return (
