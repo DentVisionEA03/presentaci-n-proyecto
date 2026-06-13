@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { recoverPassword, registerUser } from '../services/authService'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default function Login({ onLogin, onBack }) {
+  const navigate = useNavigate()
   const [mode, setMode] = useState('login')
   const [form, setForm] = useState({
     email: '',
@@ -260,7 +262,10 @@ export default function Login({ onLogin, onBack }) {
               <button
                 type="button"
                 className="text-link"
-                onClick={() => changeMode('register')}
+                onClick={() => {
+                  if (onBack) onBack();
+                  navigate('/register');
+                }}
               >
                 Registrarse
               </button>
